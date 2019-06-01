@@ -50,7 +50,7 @@ package object utils {
       result
     }
    
-    def noCircuit(visited_vertices: List[Int], edges_to_visit: List[Tuple_Int_Int]): Boolean = {
+    def noCircuit2(visited_vertices: List[Int], edges_to_visit: List[Tuple_Int_Int]): Boolean = {
       def noCircuitLoop(visited_vertices: ListBuffer[Int], 
           edges_to_visit: ListBuffer[Tuple_Int_Int]): Boolean = {
         
@@ -74,6 +74,52 @@ package object utils {
       var edges_to_visit_aux = ListBuffer(edges_to_visit: _*)
       var visited_vertices_aux = ListBuffer(visited_vertices: _*)
       noCircuitLoop(visited_vertices_aux, edges_to_visit_aux)	
+    }
+   
+    def noCircuit(edges: List[Tuple_Int_Int]): Boolean = {
+    	def noCircuitLoop(vertices_to_visit: Set[Int],
+          visited_vertices: Set[Int], 
+          edges_to_visit: Set[Tuple_Int_Int]):Boolean = {
+    	  
+      	var vertex = 0
+        var edges:Set[Tuple_Int_Int] = Set()
+        var reached_vertices: Set[Int] = vertices_to_visit.clone()
+        
+        while(vertices_to_visit.size > 0) {
+          vertex = vertices_to_visit.head
+          
+          if (edges_to_visit.exists(e => e._1 == vertex || e._2 == vertex)) {
+            edges = edges_to_visit.filter(e => e._1 == vertex || e._2 == vertex)
+            for (edge <- edges) {
+              val the_other_vertex = if (edge._1 == vertex) edge._2 else edge._1
+              
+              if (reached_vertices.exists(v => v == the_other_vertex ))
+                return false;
+              
+              AddVertex(the_other_vertex , vertices_to_visit)
+              AddVertex(the_other_vertex, reached_vertices)
+              edges_to_visit -= edge
+              println("Edges to visit: " + edges_to_visit)
+            }
+          }
+          
+          AddVertex(vertex, visited_vertices)
+          vertices_to_visit -= vertex
+          println("Vertices to visit: " + vertices_to_visit)           
+        }
+        true
+    	}
+      
+    	if (edges.length == 0)
+    	  return true
+    	
+      var edges_to_visit = Set[Tuple_Int_Int](edges: _*)
+      var graph_vertices_from_edges = vertices(edges_to_visit)
+        
+      var visited_vertices = Set[Int]()
+      var vertices_to_visit = Set[Int](graph_vertices_from_edges.head)
+      	
+      noCircuitLoop(vertices_to_visit, visited_vertices, edges_to_visit)
     }
     
     def connectedGraph(vert: List[Int], edges: List[Tuple_Int_Int]):Boolean = {
@@ -128,6 +174,7 @@ package object utils {
 	  }
     
     def isTree(vert: List[Int], edges: List[Tuple_Int_Int]):Boolean = {
-      connectedGraph(vert, edges) && noCircuit(List(vertices(edges)(0)), edges)
+      //connectedGraph(vert, edges) && noCircuit2(List(vertices(edges)(0)), edges)
+      connectedGraph(vert, edges) && noCircuit(edges)
     }
 }

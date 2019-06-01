@@ -1,7 +1,12 @@
 import utils._
 
 object Main extends App {
-   val res1 =  noCircuit(List(1), List((1,3),(1,2),(2,3)))
+   //val res1 =  noCircuit2(List(1), List((1,3),(1,2),(2,3)))
+  
+   val res = noCircuit(List((1,3),(1,2),(1,4),(4,5),(2,5)))
+  
+  
+   val res1 =  noCircuit(List((1,3),(1,2),(2,3)))
    println(res1)
    
    val res2 = connectedGraph(List(1,2,3,4,5,6,7,8,9,10,11,12), 

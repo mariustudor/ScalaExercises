@@ -9,36 +9,36 @@ class GraphSuite extends FunSuite{
   import utils.connectedGraph
   import utils.isTree
   
-  test("noCircuitLoop: List(), List() === true") {
+  /**test("noCircuitLoop: List(), List() === true") {
     assert(noCircuit(List(), List()) === true)
+  }*/
+  
+  test("noCircuitLoop: List() === true") {
+    assert(noCircuit(List()) === true)
   }
   
-  test("noCircuitLoop: List(1), List() === true") {
-    assert(noCircuit(List(1), List()) === true)
+  test("noCircuitLoop: List((1,2))) === true") {
+    assert(noCircuit(List((1,2))) === true)
   }
   
-  test("noCircuitLoop: List(1), List((1,2))) === true") {
-    assert(noCircuit(List(1), List((1,2))) === true)
-  }
-  
-  test("noCircuitLoop: List(1), List((1,3),(1,2)) === true") {
-    assert(noCircuit(List(1), List((1,3),(1,2))) === true)
+  test("noCircuitLoop: List((1,3),(1,2)) === true") {
+    assert(noCircuit(List((1,3),(1,2))) === true)
   }
     
-  test("noCircuitLoop: List(1), List((1,3)) === true") {
-    assert(noCircuit(List(1), List((1,3))) === true)
+  test("noCircuitLoop: List((1,3)) === true") {
+    assert(noCircuit(List((1,3))) === true)
   }
   
-  test("noCircuitLoop: List(1), List((1,3),(1,2),(1,4),(2,5)) === true") {
-    assert(noCircuit(List(1), List((1,3),(1,2),(1,4),(2,5))) === true)
+  test("noCircuitLoop: List((1,3),(1,2),(1,4),(2,5)) === true") {
+    assert(noCircuit(List((1,3),(1,2),(1,4),(2,5))) === true)
   }
   
-  test("noCircuitLoop: List(1), List((1,3),(1,2),(1,4),(4,5),(2,5)) === false") {
-    assert(noCircuit(List(1), List((1,3),(1,2),(1,4),(4,5),(2,5))) === false)
+  test("noCircuitLoop: List((1,3),(1,2),(1,4),(4,5),(2,5)) === false") {
+    assert(noCircuit(List((1,3),(1,2),(1,4),(4,5),(2,5))) === false)
   }
   
-  test("noCircuitLoop: List(6), List((1,2),(1,5),(2,3),(3,4),(5,6),(6,7),(7,9),(6,8),(8,10),(10,11),(11,12)) === true") {
-    assert(noCircuit(List(6), List((1,2),(1,5),(2,3),(3,4),(5,6),(6,7),(7,9),(6,8),(8,10),(10,11),(11,12))) === true)
+  test("noCircuitLoop: List((1,2),(1,5),(2,3),(3,4),(5,6),(6,7),(7,9),(6,8),(8,10),(10,11),(11,12)) === true") {
+    assert(noCircuit(List((1,2),(1,5),(2,3),(3,4),(5,6),(6,7),(7,9),(6,8),(8,10),(10,11),(11,12))) === true)
   }
   
   test("connectedGraph: List(1), List() === false") {
