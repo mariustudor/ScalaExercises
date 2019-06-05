@@ -72,3 +72,6 @@ libraryDependencies += "org.typelevel" %% "cats-core" % "1.6.0"
 
 // To learn more about multi-project builds, head over to the official sbt
 // documentation at http://www.scala-sbt.org/documentation.html
+
+// libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.7.2"
+// libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.2.3"
