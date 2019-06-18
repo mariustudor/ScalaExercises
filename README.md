@@ -6,5 +6,5 @@
 `def isTree(vert: List[Int], edges: List[Tuple_Int_Int]):Boolean`
 
 ### The implementation consists in
-* Detecting cycles 
+* Detecting cycles.
 * Checking for connectivity.
