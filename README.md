@@ -1,1 +1,1 @@
-# ScalaExercises
+# Scala Exercises
