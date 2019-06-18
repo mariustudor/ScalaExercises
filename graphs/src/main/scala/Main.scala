@@ -1,8 +1,7 @@
 import utils._
 
 object Main extends App {
-   //val res1 =  noCircuit2(List(1), List((1,3),(1,2),(2,3)))
-  
+
    val res = noCircuit(List((1,3),(1,2),(1,4),(4,5),(2,5)))
   
   
